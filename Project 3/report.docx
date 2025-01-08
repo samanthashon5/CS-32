@@ -1,0 +1,9 @@
+The name of your recursive goblin movement function and the name of the file it's implemented in, or else a statement that your goblin movement function is not recursive. (Make this the first thing, to help the grader find the function.)
+a high-level description of your goblin movement function.
+a high-level description of how you generate a level with rooms connected by corridors (or as much as you were able to implement).
+a list of all functionality that you didn't finish, as well as known bugs in your implementations or serious inefficiencies, e.g. "I couldn't get goblins to move correctly, so I made them move like Bogeymen."
+
+
+I unfortunately could not implement a goblin recursive funcion in time, so I made them move like snakes and bogeymen. 
+Additionally, I could not implement rooms and corridors, game objects, or levels. Another issue I have is that my player 
+will not stay still if i move it towards a monster that is right next to it.

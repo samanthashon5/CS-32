@@ -1,0 +1,135 @@
+﻿Samantha Shon
+UID: 506170927
+
+
+Obstacles:
+* When I would insert “PlaneFlight.h” the compiler would give an error that said that the file was not found. This was because the file was a .hpp file rather than a .h file. Additionally, as I would try to build the code, the compiler failed but there were no compiler errors. This was the most difficult part of my code that I had to fix since there was no direct message to tell me where my error was. The only error message was that there were undefined symbols within my code. I found out that I forgot to put “FrequentFlyerAccount::” in front of canEarnFreeFlight, freeFlight, and addFlightToAccount. Additionally the code would not build due to the fact that on XCode, you are unable to use a .h file with c++ and instead you must use .hpp in order to build within XCode. This was a hassle especially with changing the .hpp files back to .h files when submitting the project. Also, I had a problem with changing the cost once there was a free flight but I forgot to insert the objects of .freeFlight into the setters from PlaneFlight.
+
+
+Test Cases:
+PlaneFlight first( "Sam", "Orange County", "LAS", 85, 160 );
+PlaneFlight second( "Sam", "LAS", "NYC", 399.00, 2800 );
+PlaneFlight sample( "Sample", "Sample", "Sample", 0, 1 );
+FrequentFlyerAccount account( "Sam" );
+assert( first.getFromCity( ) == "Orange County" );
+assert( first.getToCity( ) == "LAS" );
+assert( first.getName( ) == "Sam" );
+assert( std::to_string( first.getCost( ) ) == "85.000000" );
+assert( std::to_string( first.getMileage( ) ) == "160.0000" );
+
+
+assert( std::to_string( account.getBalance( ) ) == "0.000000" );
+assert( account.getName( ) == "Sam" );
+assert( account.canEarnFreeFlight( 3300.00 ) == false );
+
+
+assert( account.addFlightToAccount( first ) == true ); 
+assert( account.addFlightToAccount( second ) == true );
+assert( std::to_string( account.getBalance( ) ) == "3085.000000" );
+
+
+if (account.canEarnFreeFlight( 285 ))
+{
+assert( account.freeFlight( "LAS", "LAX", 285, sample ) == true );
+
+
+assert( sample.getName( ) == "Sam" );
+assert( std::to_string( sample.getCost( ) ) == "0.000000" );
+assert( sample.getFromCity( ) == "LAS" );
+assert( sample.getToCity( ) == "LAX" );
+assert( std::to_string( sample.getMileage( ) ) == "285.000000" );
+
+
+assert( std::to_string( account.getBalance( ) ) == "2800.000000" );
+}
+else
+{
+assert( false ); 
+}
+
+
+PlaneFlight muffin( "Muffin", "LAX", "Doggie Heaven", 500, 500 );
+assert( account.addFlightToAccount( muffin ) == false );
+assert( std::to_string( account.getBalance( ) ) == "2800.000000" );
+cout << "all tests passed!" << endl;
+return( 0 );
+}
+
+
+* This first test ensures that the functions return the correct values and ensure that the passenger names are all the same. Additionally, this test checks to see if the .canEarnFreeFlight works under different inputs of mileage, checking to also see that the cost of the flight is assigned to zero as well as the other setters in the PlaneFlight function (name, fromCity, toCity, and mileage). The case also checks if the mileage balance is adjusted after the free flight is taken. The last bit of the case also ensures that the names that do not match are ignored
+
+
+PlaneFlight first( "Sam", "Orange County", "LAS", 85, 160 );
+PlaneFlight second( "Juna", "LAS", "NYC", 399.00, 2800 );
+PlaneFlight sample( "Sample", "Sample", "Sample", 0, 1 );
+FrequentFlyerAccount account( "Sam" );
+assert( first.getFromCity( ) == "Orange County" );
+assert( first.getToCity( ) == "LAS" );
+assert( first.getName( ) == "Sam" );
+assert( std::to_string( first.getCost( ) ) == "85.000000" );
+assert( std::to_string( first.getMileage( ) ) == "160.0000" );
+
+
+assert( std::to_string( account.getBalance( ) ) == "0.000000" );
+assert( account.getName( ) == "Sam" );
+assert( account.canEarnFreeFlight( 3300.00 ) == false );
+
+
+assert( account.addFlightToAccount( first ) == true ); 
+assert( account.addFlightToAccount( second ) == false );
+assert( std::to_string( account.getBalance( ) ) == "3085.000000" );
+
+
+* This test ensures that flights with different passenger names are returned as false.
+    PlaneFlight first( "Sam", "LAX", "LAS", -15, 285 );
+    assert( first.getFromCity( ) == "LAX" );
+    assert( first.getToCity( ) == "LAS" );
+    assert( first.getName( ) == "Sam" );
+    assert(( first.getCost( ) ) == -1 );
+    assert( std::to_string( first.getMileage( ) ) == "285.000000" );
+
+
+* This test checks that a negative cost results in a return of -1
+
+
+    FrequentFlyerAccount (“Howard”)
+    PlaneFlight muffin( "Howard", "", "Doggie Heaven", 500, 500 );
+    assert( account.addFlightToAccount( muffin ) == true );
+    assert( std::to_string( account.getBalance( ) ) == "3300.000000" );
+    cout << "all tests passed!" << endl;
+    return( 0 );
+    
+* This case ensures that an empty string for fromCity is ignored
+
+
+    FrequentFlyerAccount (“Howard”)
+    PlaneFlight muffin( "Howard", "LA", “", 500, 500 );
+    assert( account.addFlightToAccount( muffin ) == true );
+    assert( std::to_string( account.getBalance( ) ) == "3300.000000" );
+    cout << "all tests passed!" << endl;
+    return( 0 );
+
+
+* This case ensures that an empty string for toCity is ignored
+
+
+    FrequentFlyerAccount (“Howard”)
+    PlaneFlight muffin( "", "LA", “NYC", 500, 500 );
+    assert( account.addFlightToAccount( muffin ) == true );
+    assert( std::to_string( account.getBalance( ) ) == "3300.000000" );
+    cout << "all tests passed!" << endl;
+    return( 0 );
+
+
+* This case ensures that an empty string for name is ignored
+
+
+    PlaneFlight first( "Sam", "LAX", "LAS", 150, 0 );
+    assert( first.getFromCity( ) == "LAX" );
+    assert( first.getToCity( ) == "LAS" );
+    assert( first.getName( ) == "Sam" );
+    assert(std::to_string( first.getCost( ) ) == “150.000000” );
+    assert(( first.getMileage( ) ) == -1 );
+
+
+* This test checks that a negative cost results in a return of -1

@@ -1,0 +1,75 @@
+1a. Using the simplest binary search tree (BST) insertion algorithm (no balancing), show the tree that results after inserting into the above tree the nodes 80, 64, 75, 15, 37 and 28 in that order. (If you're not skilled with a drawing tool, use a simple text form of the tree. For example, the tree depicted above could be shown as
+
+                                50
+
+                         20            60
+
+                   10        40            70
+      
+                     15   30           64     80
+
+                       28   37              75
+
+
+1b. After inserting the nodes mentioned in part a, what would be printed out by inorder, preorder, and postorder traversals of the tree (assume your traversal function prints out the number at each node as it is visited)?
+
+Inorder: 10, 15, 20, 28, 30, 37, 40, 50, 60, 64, 70, 75, 80
+Preorder: 50, 20, 10, 15, 40, 30, 28, 37, 60, 70, 64, 80, 75
+Postorder: 15, 10, 28, 37, 30, 40, 20, 64, 75, 80, 70, 60, 50
+
+1c. After inserting the nodes mentioned in part a, what is the resulting BST after you delete the node 30, then the node 20? (Again, just use a simple deletion algorithm with no balancing. If you have an option of making a choice, any correct choice is acceptable.)
+
+              50
+
+       40            60
+
+ 10        37            70
+
+   15   28            64     80
+
+                          75
+
+
+2a. struct bt
+    {
+      int value;
+      bt *pleft, *pright, *parent;
+    }
+
+2b. If the tree is empty
+      allocate new node and insert new value into it
+      point root pointer to new node, DONE
+
+    Start at the root of the tree
+    While we're not done:
+      if the value is equal to parent node's value, DONE
+      if value is less than parent node's value:
+        if there's a left child, go left
+        else, allocate a new node and insert new value into it
+          set parent node's left pointer to new node, DONE
+      if value is greater than parent node's value:
+        if there is a right child, then go right
+        else, allocate a new node and insert new value into it
+          set parent node's right pointer to new node, DONE
+
+
+3a.               7
+
+              5        6
+
+          2     1    3
+
+3b. 0 1 2 3 4 5
+    7 5 6 2 1 3
+
+3c. 0 1 2 3 4
+    6 5 3 2 1
+
+4a. O(C+S) 
+4b. O(log(C+S)) 
+4c. O(logC + logS) 
+4d. O(logS) 
+4e. O(1) 
+4f. O(logC + S) 
+4g. O(SlogS) 
+4h. O(ClogS)

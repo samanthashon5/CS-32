@@ -1,0 +1,37 @@
+1e. When the vector pushes back an int that increases the memory beyond the size of 5,
+ it allocates a bigger chunk of memory to store the values, leaving the iterator to be 
+ invalid, thus causing the test to fail.
+
+3. The Coord class has coordinates of type double instead of ItemType, meaning that 
+Set<Coord>::insert cannot be called due to the fact that the Set class relies on the 
+comparison operator. Since the Coord class does not have a < operator that is 
+implemented, then the insert function cannot be called because functions in the Set 
+class such as findFirstAtMost rely on the comparison operator.
+
+4b. Without the path parameter, we could not recursively print and add all the 
+directories needed to access the file. The one parameter listAll function allows for 
+the user to easily access one directory. However, it is necessary for a path 
+parameter in order to recursively implement the overload of listAll.
+
+5a. O(N^3)
+
+5b. O(N^3) still because the greatest number the first for loop runs is N number of 
+times, then the nested for loop runs for a maximum of i times, meaning N-1 times, 
+then the last nested for loop runs for a maximum of N times. This leaves the dominant 
+term to be N^3.
+
+6a. O(N^2) since the worst time complexity occurs when you iterate through sp of size 
+N, then you insert into result of size N, leading to N*N, meaning that the result 
+leads to a time complexity of O(N^2).
+
+6b. O(NlogN) because the maximum time complexity for copying all items into v 
+would be O(2N), deleting all items of *this, of size N, would be O(N), and copying 
+unique items from v into result would have a time complexity depending on the size of 
+v, meaning O(2N). However, sorting v uses a time complexity of O(NlogN), the highest 
+of all the other terms.
+
+6c. O(N) because assigning this* to set1 has a time complexity of O(N), when you 
+merge the two sets, there is a time complexity of O(2N) which means O(N) because we 
+traverse through both linked lists. Additionally, when you insert the remaining 
+elements of sp, the maximum time complexity is O(N). Therfore, the maximum time 
+complexity overall is O(N).

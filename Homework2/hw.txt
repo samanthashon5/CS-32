@@ -1,0 +1,33 @@
+Problem 2:
+The first 12 (r,c) coordinates popped off the stack by pathExists():
+4,3
+3,3
+5,3
+5,2
+5,1
+6,1
+7,1
+8,1
+8,2
+6,3
+4,4
+4,5
+
+Problem 4:
+The first 12 (r,c) coordinates popped off the queue by pathExists():
+4,3
+4,4
+5,3
+3,3
+4,5
+6,3
+5,2
+4,6
+5,5
+5,1
+4,7
+6,5
+
+The two algorithms differ from each other the order in which they search the maze. The stack algorithm executes a depth-first search 
+while the queue executes a breadth-first search. The queue implementation more expands from the first starting point and distributes
+outwards pretty evenly while the stack implementation just searches the last available position.
